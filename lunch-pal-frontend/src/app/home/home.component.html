@@ -1,0 +1,53 @@
+<div id="hero">
+  <div id="hero-overlay">
+    <div fxLayout="row" gdAlignColumns="start stretch" >
+      <div fxLayout="column" fxLayoutAlign="center center" style="height:80vh; ">
+        <mat-card class="login_card">
+          <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
+            <mat-card-content fxLayoutGap="10px">
+              <h2 >My lunchPals</h2>
+              <p class="custom_p" *ngIf="getMyLunchPals().length === 0">You dont have any lunchPals yet, please find one</p>
+              <mat-accordion>
+                <mat-expansion-panel *ngFor="let lunchpal of getMyLunchPals()">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title class="mat-box-intro">
+                      {{lunchpal.mensa}}
+                    </mat-panel-title>
+                    <mat-panel-description class="mat-box-intro">
+                      {{lunchpal.day.getDate()<10?'0'+lunchpal.day.getDate():lunchpal.day.getDate()}}.{{lunchpal.day.getMonth()<9?'0'+(lunchpal.day.getMonth()+1):(lunchpal.day.getMonth()+1)}}.{{lunchpal.day.getFullYear()}}
+                    </mat-panel-description>
+                    <mat-panel-description class="mat-box-intro">
+                      {{lunchpal.status}}
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <p>Time interval : {{lunchpal.starttime}}-{{lunchpal.endtime}}</p>
+                  <p>Number of people : {{lunchpal.numberOfPeople}}</p>
+                  <p>Joined people</p>
+                  <mat-accordion class="joinedmembers">
+                    <mat-expansion-panel *ngFor="let joinedMember of joinedPeopleMock;let index = index;">
+                      <mat-expansion-panel-header>
+                        {{joinedMember}}
+                      </mat-expansion-panel-header>
+                      <mat-form-field class="example-form-field">
+                        <input matInput type="text" placeholder="Comment" name="comment" required><!-- [formControl]="commentFormControl" [(ngModel)]="comment" -->
+                        <!-- <mat-error *ngIf="commentFormControl.hasError('required')">
+                          Comment is <strong>required</strong>
+                        </mat-error> -->
+                      </mat-form-field>
+                      <button class="report" title="report {{joinedMember}}" (click)="report(joinedMember)">
+                        report
+                      </button>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </mat-card-content>
+          </mat-card-actions>
+          <button mat-raised-button id="login_btn" (click)="findLunchPal()">
+            Find a lunchPal
+          </button>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

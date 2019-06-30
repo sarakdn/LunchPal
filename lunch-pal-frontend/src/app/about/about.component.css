@@ -1,0 +1,29 @@
+.center{
+    text-align: center;
+    margin-top: 3%;
+    color:#ffd740;
+    padding:0px 400px;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+
+/*background image*/
+#hero{
+    background-image: url(/assets/about_backg.jpg);
+    background-size: cover;
+    background-position: center center;
+    position:relative;
+    top:0;
+    bottom:0;
+    height:90vh;
+    
+}
+#hero-overlay{
+    position:absolute;
+    background-color: rgb(106, 27, 154,0.65);
+    top:0;
+    bottom:0;
+    height:100%;
+    width:100%;
+}
